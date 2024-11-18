@@ -121,6 +121,19 @@ const Menu = () => {
               >
                 All
               </button>
+
+              <button
+                onClick={() => fillterItems("rice")}
+                className={selectedCategory === "rice" ? "active" : ""}
+              >
+                Rice
+              </button>
+              <button
+                onClick={() => fillterItems("kottu")}
+                className={selectedCategory === "kottu" ? "active" : ""}
+              >
+                Kottu
+              </button>
               <button
                 onClick={() => fillterItems("salad")}
                 className={selectedCategory === "salad" ? "active" : ""}
