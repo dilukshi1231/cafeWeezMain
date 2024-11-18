@@ -38,61 +38,85 @@ export default function ContactForm() {
   };
 
   return (
-    <>
+    <div className="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">
+        Contact Us
+      </h2>
       <form
         onSubmit={handleSubmit}
-        className="py-4 mt-4 border-t flex flex-col gap-5"
+        className="space-y-6"
       >
         <div>
-          <label htmlFor="fullname">Full Name</label>
+          <label
+            htmlFor="fullname"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Full Name
+          </label>
           <input
             onChange={(e) => setFullname(e.target.value)}
             value={fullname}
             type="text"
             id="fullname"
             placeholder="John Doe"
+            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
           />
         </div>
 
         <div>
-          <label htmlFor="email">Email</label>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Email
+          </label>
           <input
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             type="text"
             id="email"
             placeholder="john@gmail.com"
+            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
           />
         </div>
 
         <div>
-          <label htmlFor="message">Your Message</label>
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Your Message
+          </label>
           <textarea
             onChange={(e) => setMessage(e.target.value)}
             value={message}
-            className="h-32"
+            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 h-32"
             id="message"
             placeholder="Type your message here..."
           ></textarea>
         </div>
 
-        <button className="bg-green-700 p-3 text-white font-bold" type="submit">
+        <button
+          className="w-full bg-green-700 hover:bg-green-800 text-red font-bold py-2 px-4 rounded-lg shadow"
+          type="submit"
+        >
           Send
         </button>
       </form>
 
-      <div className="bg-slate-100 flex flex-col">
-        {error &&
-          error.map((e) => (
+      <div className="mt-6">
+        {error.length > 0 &&
+          error.map((e, index) => (
             <div
-              className={`${
-                success ? "text-green-800" : "text-red-600"
-              } px-5 py-2`}
+              key={index}
+              className={`text-center px-4 py-2 rounded-lg ${
+                success ? "bg-green-100 text-green-800" : "bg-red-100 text-red-600"
+              }`}
             >
               {e}
             </div>
           ))}
       </div>
-    </>
+    </div>
   );
 }

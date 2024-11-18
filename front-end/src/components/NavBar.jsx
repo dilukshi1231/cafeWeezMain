@@ -47,11 +47,7 @@ const NavBar = () => {
           Contact
         </a>
       </li>
-      <li>
-        <a href="/contact" className="text-gamboge">
-          Contact
-        </a>
-      </li>
+      
     </>
   );
 

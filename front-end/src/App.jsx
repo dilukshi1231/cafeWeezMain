@@ -4,6 +4,7 @@ import Main from "./layouts/Main";
 import About from "./pages/about/About";
 import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
+import ContactForm  from "./pages/ContactForm";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path : "/about",
         element : <About/> 
+      },
+      {
+        path : "/contact",
+        element : <ContactForm/> 
       }
     ]
   },
