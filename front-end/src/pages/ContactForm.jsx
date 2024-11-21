@@ -38,10 +38,12 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">
-        Contact Us
-      </h2>
+
+
+    <div className="max-w-lg mx-auto mt-16 p-6 bg-white rounded-lg shadow-lg">
+  <h2 className="text-2xl font-bold text-center mb-14 text-gray-800">
+    Contact Us
+  </h2>
       <form
         onSubmit={handleSubmit}
         className="space-y-6"
