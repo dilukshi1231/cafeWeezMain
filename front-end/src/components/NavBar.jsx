@@ -22,16 +22,18 @@ const NavBar = () => {
           Home
         </a>
       </li>
-      <li>
-        <a href="/about" className="text-gamboge">
-          About
-        </a>
-      </li>
+
       <li>
         <a href="/menu" className="text-gamboge">
           Menu
         </a>
       </li>
+      <li>
+        <a href="/about" className="text-gamboge">
+          About
+        </a>
+      </li>
+      
       <li>
         <a href="/gallery" className="text-gamboge">
           Gallery
@@ -86,7 +88,7 @@ const NavBar = () => {
               <div className="fixed inset-0 bg-base-100 z-50 p-4">
                 <ul className="menu flex flex-col h-full justify-center items-center text-2xl space-y-9">
                   <button
-                    className="btn btn-circle mb-10 border-gamboge text-gamboge"
+                    className="btn btn-circle mb-10 border-gamboge text-gamboge hover:bg-red-500"
                     onClick={() => setIsOpen(false)}
                   >
                     X
