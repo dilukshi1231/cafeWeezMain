@@ -38,7 +38,7 @@ const Banner = () => {
       />
       <div className="absolute text-white text-center space-y-6">
         <h2 className="font-" style={{ fontFamily: "Dancing Script, cursive" }}>
-          Some Text in here
+          Enjoy your meal at your own taste 
         </h2>
         <h1 className="text-4xl font-bold">Some Text in here</h1>
         <p className="mt-2 text-lg font-semibold">Some Text in here</p>
