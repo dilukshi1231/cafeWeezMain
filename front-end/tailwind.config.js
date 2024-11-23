@@ -15,6 +15,8 @@ export default {
         'sm-low': { 'raw': '(min-width: 340px) and (min-height: 840px)' }
       },
       colors:{
+        "primaryRed": "#D7263D", // Replace with your custom red
+         "primaryYellow": "#FFD700", // Replace with your custom yellow
         "lightRose":"#F5D7DE",
         "gamboge":"#E49B0F", 
         "carmine":"#D70040",
