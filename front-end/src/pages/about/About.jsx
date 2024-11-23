@@ -51,7 +51,7 @@ const About = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-      <div className="border-2 border-red-500 rounded-lg p-8 flex flex-col gap-4 text-center hover:bg-yellow-500 hover:text-gray-800 transition-all duration-300 shadow-md cursor-pointer transform hover:scale-105">
+      <div className="border-2 border-yellow-500 rounded-lg p-8 flex flex-col gap-4 text-center hover:bg-yellow-500 hover:text-gray-800 transition-all duration-300 shadow-md cursor-pointer transform hover:scale-105">
   <b className="text-lg">Online Ordering</b>
   <p>
     Enjoy your favorite meals delivered to your doorstep quickly and
