@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -6,108 +7,91 @@ const NavBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
-      setSticky(offset > 0);
+      setSticky(window.scrollY > 0);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = (
-    <>
-      <li>
-        <a href="/" className="text-gamboge">
-          Home
-        </a>
+  const navLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/about', label: 'About us' },
+    { path: '/contact', label: 'Contact us' },
+  ];
+
+  const renderNavItems = () =>
+    navLinks.map((link) => (
+      <li key={link.path}>
+        <Link
+          to={link.path}
+          className="text-[#ed1b24] hover:text-[#A91D3A] transition-colors duration-200 font-medium"
+        >
+          {link.label}
+        </Link>
       </li>
-      <li>
-        <a href="/about" className="text-gamboge">
-          About
-        </a>
-      </li>
-      <li>
-        <a href="/menu" className="text-gamboge">
-          Menu
-        </a>
-      </li>
-      <li>
-        <a href="/gallery" className="text-gamboge">
-          Gallery
-        </a>
-      </li>
-      <li>
-        <a href="/blog" className="text-gamboge">
-          Blog
-        </a>
-      </li>
-      <li>
-        <a href="/contact" className="text-gamboge">
-          Contact
-        </a>
-      </li>
-      <li>
-        <a href="/contact" className="text-gamboge">
-          Contact
-        </a>
-      </li>
-    </>
-  );
+    ));
 
   return (
-    <header className="max-w-screen-2xl container mx-auto bg-black fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
-      <div className={`navbar ${isSticky ? "bg-black bg-opacity-10 shadow-lg" : "bg-transparent"} transition-all duration-300`}>
-        <div className="flex-1 pl-10">
-          <img className="w-12 h-12" src="/logo.jpg" alt="Logo" />
-        </div>
+    <header
+      className={`${
+        isSticky ? 'bg-[#151515] shadow-lg' : 'bg-transparent'
+      } fixed w-full z-50 transition-all duration-300`}
+    >
+      <div className="container mx-auto px-4 lg:px-10 flex items-center justify-between py-4">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img src="/logo.png" alt="Company Logo" className="w-12 h-12" />
+          <span className="ml-3 text-eeeeee font-bold text-lg text-[#ed1b24] text-[30px] font-sans">WEEZ CAFE</span>
+        </Link>
 
-        {/* Hamburger Icon for Small Devices */}
-        <div className="flex-none lg:hidden">
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              onClick={() => setIsOpen(!isOpen)}
-              role="button"
-              className="btn btn-ghost"
+        {/* Nav Items for Large Screens */}
+        <nav className="hidden lg:flex items-center space-x-8">
+          <ul className="flex items-center space-x-6">{renderNavItems()}</ul>
+          <Link
+            to="/login"
+            className="py-2 px-4 bg-[#ed1b24] text-white  hover:bg-[#C73659] transition duration-200 rounded-2xl p-40 font-medium"
+          >
+            Login
+          </Link>
+        </nav>
+
+        {/* Hamburger Menu (Mobile) */}
+        <button
+          className="lg:hidden p-2 text-eeeeee focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Navigation"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+
+        {/* Mobile Dropdown */}
+        {isOpen && (
+          <div className="fixed inset-0 bg-[#151515] flex flex-col items-center justify-center space-y-6 text-eeeeee z-50 lg:hidden">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 text-eeeeee text-3xl focus:outline-none"
+              aria-label="Close Menu"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
-            </div>
-            {isOpen && (
-              <div className="fixed inset-0 bg-base-100 z-50 p-4">
-                <ul className="menu flex flex-col h-full justify-center items-center text-2xl space-y-9">
-                  <button
-                    className="btn btn-circle mb-10 border-gamboge text-gamboge"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    X
-                  </button>
-                  {navItems}
-                </ul>
-              </div>
-            )}
+              &times;
+            </button>
+            <ul className="flex flex-col items-center space-y-4 text-lg">
+              {renderNavItems()}
+            </ul>
           </div>
-        </div>
-
-        {/* for large devices, navItems display as row */}
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {navItems}
-          </ul>
-        </div>
+        )}
       </div>
     </header>
   );
